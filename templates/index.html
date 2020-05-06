@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Predict If the Flight is Delayed Or not</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+     <!-- 'DAY_OF_WEEK', 'OP_CARRIER_AIRLINE_ID', 'DEP_TIME', 'DEP_DEL15',
+       'ARR_TIME', 'ARR_DEL15', 'CANCELLED', 'DEP_TIME_BLK' -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="DAY_OF_WEEK" placeholder="DAY_OF_WEEK" required="required" />
+        <input type="text" name="OP_CARRIER_AIRLINE_ID" placeholder="OP_CARRIER_AIRLINE_ID" required="required" />
+		<input type="text" name="DEP_TIME" placeholder="DEP_TIME" required="required" />
+		<input type="text" name="ARR_TIME" placeholder="ARR_TIME" required="required" />
+		<input type="text" name="ARR_DEL15" placeholder="ARR_DEL15" required="required" />
+		<input type="text" name="CANCELLED" placeholder="CANCELLED" required="required" />
+		<input type="text" name="DEP_TIME_BLK" placeholder="DEP_TIME_BLK" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
